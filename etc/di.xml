@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Sales Processor configuration -->
+    <!-- Sales processors options -->
+    <type name="MageWorx\OrderEditor\Model\Config\Source\SalesProcessors">
+        <arguments>
+            <argument name="salesProcessors" xsi:type="array">
+                <item name="do_nothing" xsi:type="array">
+                    <item name="value" xsi:type="string">do_nothing</item>
+                    <item name="label" xsi:type="string" translatable="true">Do Nothing</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Sales Processors Factory (based on available options) -->
+    <type name="MageWorx\OrderEditor\Model\Order\SalesProcessorFactory">
+        <arguments>
+            <argument name="salesProcessors" xsi:type="array">
+                <item name="do_nothing" xsi:type="string">MageWorx\OrderEditorSalesProcessor\Model\Order\SalesProcessor\DoNothingSalesProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
